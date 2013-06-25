@@ -1,0 +1,10 @@
+
+@media (min-width:1000px){
+	aside .widget{width:31%;}
+}
+@media (max-width:999px) and (min-width:670px){
+	aside .widget{width:47%;}
+}
+@media (max-width:669px) {
+	aside .widget{width:98%;}
+}

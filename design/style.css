@@ -1,0 +1,151 @@
+/*INITIALISATION
+
+	transp15="rgba(0,0,0,0.15)"
+	transp25="rgba(255,255,255,0.25)"
+	info25="rgba(255,255,0,0.25)"
+	arrondi="5"
+	
+	gradcol1="rgba(200,200,200,0.3)"
+	gradcol2="rgba(100,100,100,0.3)"
+	couleur_lien_normal="#000";
+	couleur_lien_hover=lighten(couleur_lien_normal,40);
+*/
+/* général */
+*{borbox}
+body{ff_georgia;fs 16 background:url(img/mooning.png) #eee;min-width:321px;}
+a{underoff color:couleur_lien_normal;}
+a:hover{underoff color:couleur_lien_hover;}
+form{disib marl 10}
+input{outline:none;roundc arrondi height:25px;pad 3 vertical-align: top; mart 3}
+input[type=text],input[type=url]{ background-color:rgba(255,255,255,0.8);boxemboss 1 insetshadow 1 3 #000}
+input[type=submit]{curhand boxraise 1 background-color:rgba(0,0,0,0.25); boxshadow 1 2 #000}
+input[type=submit]:hover{ background-color:rgba(0,0,0,0.15);}
+input[type=submit]:active{border-color:black; background-color:rgba(0,0,0,0.35);}
+
+/* classes spéciales */
+.height_auto{max-height:100%!important;}
+.width_auto{background-color:red!important;max-width:100%!important;width:auto!important;}
+.scrollable{background-color:#fff;height:500px;overflow-y:scroll;marb arrondi}
+.error{color:red; pad 20 }
+
+/* couleurs de barres de widgets */ 
+
+.color1{txtemboss #fff vgradient #ddd #cdcdcd}
+.color2{vgradient #555 #333!important;color:white;txtshadow}
+
+header{noselect border-bottom:1px solid #444;boxshadow 1 2 #888 pad 10 vgradient #555 #333}
+	header .logo{disib width :64px;height:57px;background:url(img/logotiny.png) no-repeat;marr 20}
+	header nav{disib vertical-align: bottom;}
+	header nav ul.toolbar{ white-space:nowrap;}
+	.config header nav ul.toolbar{ hideme}
+	header nav ul{disib vertical-align: bottom;marb 12}
+		header nav li{disib lh 20 list-style:none;border:1px solid #acacac;border-bottom:1px solid #787878; roundc 3 boxshadow 1 2 #000 white-space:nowrap;pad 1 background-color:#ababab;}
+		header nav li a{color:#777;txtb txtemboss #fff lh 20 pad 5 border-top:1px solid #efefef; disib width:100%;roundc 3 vgradient #bbb #ababab}
+		header nav li a:hover{color:#000; vgradient #ccc #bcbcbc}
+		header nav li.add_feed{padl 9 white-space:nowrap;overflow:hidden;txtb txtemboss txtc lh 35 curhand  height:36px;min-width:35px;width:35px; vertical-align:top; border:1px solid #a62; border-top:1px solid #fe9; border-bottom:1px solid #840; vgradient #F80 #F20 boxshadow 1 1 #420}
+		header nav li.add_feed:hover{vgradient #Fb0 #F50 }
+			
+		header nav li.add_tab{padl 9 white-space:nowrap;overflow:hidden;txtb txtemboss txtc lh 30 curhand  height:36px;min-width:35px;width:35px; vertical-align:top;border:1px solid #050; border-top:1px solid #9f9; border-bottom:1px solid #060; vgradient #0c0 #080 boxshadow 1 1 #020}
+		header nav li.add_tab:hover{vgradient #0c0 #090 }	
+		header nav li.close{padl 7 padr 7 white-space:nowrap;overflow:hidden;txtb txtemboss txtc lh 30 curhand  height:36px;min-width:35px;width:35px; vertical-align:top;border:1px solid #700; border-top:1px solid #f99; border-bottom:1px solid #500; vgradient #c00 #600 boxshadow 1 1 #200}
+		header nav li.close:hover{vgradient #d00 #700 }
+			
+			/*header nav li.add button{background:transparent; height:25px; width:25px;border:none;}*/
+		.index header nav li.active { border-bottom:solid 1px #000;background-color:#ddd;border-top:solid 1px #fff;}
+		.index header nav li.active a{insethalo white color:black;vgradient #eee #cccccc}
+
+aside{txtc padb 70}
+	aside .widget{
+		mar 10 pad 0 txtj disib antioverflow
+		width:31%; min-height:50px;background:url(img/loading.gif) no-repeat center center #FFF; vertical-align: top;roundc arrondi boxshadow 5 5 #888 
+		border:1px solid #acacac;
+	}
+		aside .widget h1{vertical-align:top;overflow-x:hidden;white-space:nowrap; lh 20 border-top:1px solid #efefef;txtb txtl fs 12 pad 5 roundtop arrondi border-bottom: 1px solid #acacac;txtemboss #fff 
+			background-image: -moz-linear-gradient( top, gradcol1, gradcol2); background-image: -o-linear-gradient( top, gradcol1, gradcol2); background-image: -webkit-gradient(linear, center top, center bottom, from(gradcol1), to(gradcol2)); background-image: -webkit-linear-gradient( top, gradcol1, gradcol2); background-image: linear-gradient( top, gradcol1, gradcol2);
+
+		}
+		body.Firefox aside .widget h1{white-space:pre-wrap;}
+			aside .widget h1 .btnbar{disib txtr}
+			aside .widget h1 a{vertical-align:top;disib color:rgba(0,0,0,0.8);overflow:hidden;}
+			aside .widget h1 a:hover{color:#000;underon}
+			aside .widget h1 em{vertical-align:top;curhand fs 12 pad 3 color:#700;white-space:nowrap;}
+			aside .widget h1 img{vertical-align:top;width:16px;height:16px;vertical-align: middle;}
+			.mark_all_read:before{content:"(";color:#700;txti}
+			.mark_all_read:after{content:")";color:#700;txti}
+			aside .widget h1 .close,aside .widget h1 .refresh,.widget h1 .foldunfoldall{curhand flor vertical-align:top;border:none;height:16px;width:16px;background:url(img/icones.png) no-repeat 0 -158px transparent;opacity 50}
+			aside .widget h1 .refresh{background-position: 0 -189px;}
+			aside .widget h1 .foldunfoldall{background-position: 0 -285px ;}
+			aside .widget h1 .close:hover,aside .widget h1 .refresh:hover,.widget h1 .foldunfoldall:hover{opacity 99}
+		aside .widget ul{marl 5 marr 5 pad 5 ;}
+		aside .widget ul.filtreyes{background-color:rgba(0,255,0,0.2)!important;}
+		aside .widget ul.filtreno{background-color:lightpink;opacity:50;}
+		aside .widget ul.read {opacity 30}
+		aside .widget ul.read:hover {opacity 80}
+		
+		aside .widget ul:hover{background-color:#FFF;}
+		aside .widget ul:impair{background-image:url(img/trame25.png);insethalo white roundc arrondi}
+			aside .widget ul li{list-style:none;}
+			aside .widget ul .titre{txtb  fs 12}
+			aside .widget ul .titre button.toggle{background:url(img/icones.png) no-repeat transparent;border:none;width:16px;height:16px;curhand padl 16 opacity 50}
+			aside .widget ul.unread .titre button.toggle{background-position: 0 -30px ;}
+			aside .widget ul.read .titre button.toggle{background-position: 0 2px ;}
+			aside .widget ul .titre button.toggle:hover{opacity 99}
+			aside .widget ul .titre a{padr 20 background:url(img/icones.png) no-repeat right -398px transparent;}
+			aside .widget ul .titre a:hover{color:#F80;txthalo orange}
+			aside .widget ul .description{overflow:hidden;cursout fs 11 pad 5 padt 0  max-height:50px;}
+			aside .widget ul .description img{roundc arrondi boxshadow 1 2 #888 mar 5 flol max-width:100%;height:auto;}
+			aside .widget ul .description a{txtb}
+			aside .widget ul .infos{fs 10 txti txtr padt 3 color:#777; txtemboss }
+
+
+.config .widget .scrollable{pad 10}
+.config .widget .scrollable form{mar 0 width:100%;}
+.config .widget .scrollable li{txtl list-style: none;}
+.config .widget .scrollable li label{disbl}
+.config .widget .scrollable li input{width:100%;}
+.config .widget .scrollable li input[type=text]{insetshadow 1 1 #888}
+.config .widget .scrollable li input[id^=exclude]{background-color:#F55;color:pink;}
+.config .widget .scrollable li input[name=positive_filter]{background-color:#5F5;color:#050;}
+.config .widget .scrollable li input.feed{ disib background-color:#444;color:#fff;width:80%;}
+.config .widget .scrollable li input[type=text]:hover{background-color:#eee;color:#333;}
+.config .widget .scrollable li input[type=text]:focus{background-color:#ffa;color:#533;}
+.config .widget .scrollable li select{width:19%;}
+.config .widget .scrollable fieldset{border: 1px solid #ddd;pad 10 mart 15 roundc arrondi }
+.config .widget .scrollable fieldset legend{pad 5 txti txtshadow color:#888;}
+.config .widget .scrollable fieldset .color{vertical-align:bottom;disib width:50px;height:26px; roundc arrondi boxemboss 1 pad 2}
+
+
+
+footer{txtr color:#F80;txtshadow position:fixed;bottom:0;left:0;right:0;height:auto;min-height:30px;pad 5 noselect border-top:1px solid #888;boxshadow 0 9 #000 vgradient #555 #333}
+	footer .github{disib lh 32 background:url(img/githubmini.png);width:16px;height:16px;vertical-align: middle}
+	footer em{curarro font-style: normal;}
+	footer img{vertical-align: middle}
+	footer a.config_link,footer a.rss_link{opacity 50 mart 4 disbl width:16px;height:16px;background:url(img/icones.png) no-repeat 0 -430px;flol}
+	footer a.rss_link{marr 5 background-position:0 -369px;}
+	footer a.config_link:hover,footer a.rss_link:hover{opacity 99}
+	footer a.deconnect_link{marl 15 flol fs 12 color:#bbb!important; lh 24}
+	footer a{color:#Fa0;}
+	footer a:hover{color:#Fc0}
+	footer .ajax{hideme!important disib}
+
+
+
+/* Transition & mediaquery */
+*{transitall 200ms}
+*:hover{transitall 200ms}
+@media (max-width:320px) {
+	aside .widget{width:99%;}
+
+	footer,nav{txtc width:100%;}
+	header .logo{disbl marauto marb 30}
+	nav ul,nav li{width:99%;}
+	.nomobile{hideme}
+	.scrollable{overflow-y:visible;height:auto;}
+	aside .widget ul.read{hideme}
+
+}
+
+@viewport{
+    width: device-width;
+    zoom:1;
+}

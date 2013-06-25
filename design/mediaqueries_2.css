@@ -1,0 +1,6 @@
+@media (min-width:641px){
+	aside .widget{width:47%;}
+}
+@media (max-width:640px){
+	aside .widget{width:100%;}
+}
