@@ -1,15 +1,23 @@
-+:
-on peut ouvrir ++ onglets dans des fenêtres séparées (+ pour moi)
-on récupère le contenu par onglet
-chaque widget est chargé via ajax individuellement
-chaque onglet possède son propre flux rss qui agrège tous les flux qu'il contient: les items de chaque flux sont mélangés et classés par date.
-configuration de la couleur de la barre de titre de chaque widget (flux)
-possibilité d'appliquer des filtres positifs ou négatifs aux flux d'un onglet.
-le colonnage entièrement autogéré: sonar'rss crée les colonnes en fonction du nb de flux dans l'onglet et des dimensions de la fenêtre.
-chaque onglet peut filtrer les items de ses flux pour mettre en valeur ou atténuer les items en fonction de l'intérêt qu'il représente.
+Alternative à NetVibes pour la lecture de flux
+Auteur: Bronco@warriordudimanche.net
+licence: opensource & libre (laissez simplement un petit lien pour créditer mon boulot ^^ )
 
-todo:
+-gestion d'onglets (ajout et suppression, renommage)
+-ajout, suppression, modification de widget/flux pour chaque onglet,
+-Sonar'RSS cherche toujours à présenter les widgets de la façon la plus homogène et logique, en fonction du nombre de widgets de l'onglet et de la taille de la fenêtre...
+-gestion du statut lu/ nonlu individuel (pour chaque item) et global (pour tout le widget/flux)
+-customisation des couleurs de la barre de titre des widgets
+-fold / unfold de la description de chaque item (individuelle sur clic dans la description et par widget via un bouton)
+-raffraîchissement individuel des widgets
+-chaque widget/flux est chargé en asynchrone, individuellement.
+-la page de configuration permet d'ajouter des filtres aux onglets servant à augmenter ou diminuer la visibilité de certains items des widgets qui le composent:
+-un filtre positif:les items contenant un des mots (séparés par une virgule) seront mis en valeur avec un fond vert
+-un filtre négatif: les items contenant un des mots auront un fond rose et une opacité moindre
+-Cette option permet par exemple de voir en priorité les flux qui parlent de toi ou, pour la récup de films de vacances, qui offrent du "1080" et de passer au second plan ceux qui ne proposent que des "sons LD" ou qualite R5" (je pense qu'on se comprend )
+-J'ai de plus ajouté une option pour les flux shaarli: un lien répondre via shaarli qui permet d'ajouter l'item dans son propre shaarli pour y répondre ou compléter.
+-J'ai réutilisé mon funnel pour proposer en plus un flux rss qui agrège tous les flux de chaque onglet: Le flux global de l'onglet se trouve en bas de page, à gauche.
 
-ajouter le filtrage des flux de l'onglet en mettant en valeur les flux positifs et en retrait les flux négatifs
-mieux gérer le chargement des onglets en mettant les pages en cache pour afficher le contenu précédent de suite puis le mettre à jour après.
-mieux gérer les balises optionnelles (author, comment etc)
+
+TODO:
+raffraîchissement périodique / cronjob
+page publique
