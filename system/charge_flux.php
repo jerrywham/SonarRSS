@@ -4,7 +4,7 @@ require("system.php");include('syndexport.php');
 if (is_file('lang/'.LANGUAGE.'.php')){include('lang/'.LANGUAGE.'.php');}else{$lang=array();}
 ## LES FONCTIONS
 register_shutdown_function('Timelimitexeeded');// détourner les erreurs fatales de chargement 
-function Timelimitexeeded(){$error = error_get_last();if ($error['type'] === E_ERROR) {exit('<div class="error">'.$url_decode.'<br/>'.msg('There was a problem downloading the feed...').'<a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>');}}
+function Timelimitexeeded(){$error = error_get_last();if ($error['type'] === E_ERROR) {exit('<div class="error">'.$_GET['url'].'<br/>'.msg('There was a problem downloading the feed...').'<a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>');}}
 function store($file,$datas){file_put_contents($file,gzdeflate(json_encode($datas)));}
 function unstore($file){return json_decode(gzinflate(file_get_contents($file)),true);}
 function aff($a,$stop=true,$line=__LINE__){echo 'Arret a la ligne '.$line.' du fichier '.__FILE__.'<pre>';var_dump($a);echo '</pre>';if ($stop){exit();}}
