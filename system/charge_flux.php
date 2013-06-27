@@ -1,11 +1,10 @@
 <?php
-
 ## TOUTE LA LISTE DE COURSES ^^
-require("system.php");include('syndexport.php');//include ('cache.php');
+require("system.php");include('syndexport.php');
 if (is_file('lang/'.LANGUAGE.'.php')){include('lang/'.LANGUAGE.'.php');}else{$lang=array();}
 ## LES FONCTIONS
 register_shutdown_function('Timelimitexeeded');// détourner les erreurs fatales de chargement 
-function Timelimitexeeded(){$error = error_get_last();if ($error['type'] === E_ERROR) {exit('<div class="error">'.$_GET['url'].'<br/>'.msg('There was a problem downloading the feed...').'<a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>');}}
+function Timelimitexeeded(){$error = error_get_last();if ($error['type'] === E_ERROR) {exit('<div class="error">'.$url_decode.'<br/>'.msg('There was a problem downloading the feed...').'<a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>');}}
 function store($file,$datas){file_put_contents($file,gzdeflate(json_encode($datas)));}
 function unstore($file){return json_decode(gzinflate(file_get_contents($file)),true);}
 function aff($a,$stop=true,$line=__LINE__){echo 'Arret a la ligne '.$line.' du fichier '.__FILE__.'<pre>';var_dump($a);echo '</pre>';if ($stop){exit();}}
@@ -73,8 +72,10 @@ function filters($positive,$negative,$content){
 
 ## GESTION DU FLUX DEMANDE
 //récupération du flux
+$url_decode=urldecode($_GET['url']);
 ini_set('display_errors', '0');// éviter l'apparition de l'erreur dans un widget
-if (!$flux=file_curl_contents($_GET['url'])){exit('<div class="error">'.$_GET['url'].'<br/>'.msg('There was a problem accessing the feed...').' '.$flux.' <a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>'); }
+if (!$flux=file_curl_contents($url_decode)){exit('<div class="error">'.$url_decode.'<br/>'.msg('There was a problem accessing the feed...').' '.$flux.' <a href="'.$_GET['feed'].'">'.msg('Click here to remove it').'</a></div>'); }
+
 $contenu=array();
 $flux =new SyndExport($flux,false);
 $contenu['infos']=$flux->exportInfos();
@@ -82,17 +83,19 @@ $contenu['items']=$flux->exportItems(-1);
 ini_set('display_errors', '1');   
 // fallback pour les infos inexistantes et éviter d'afficher des erreurs de noobs
 if (!isset($contenu['infos']['description'])){$contenu['infos']['description']='';}
-if (!isset($contenu['infos']['link'])){$link='';$contenu['infos']['link']=$_GET['url'];}else{$link=$contenu['infos']['link'];}
+if (!isset($contenu['infos']['link'])){$link='';$contenu['infos']['link']=$url_decode;}else{$link=$contenu['infos']['link'];}
 if (!isset($contenu['infos']['date'])&&isset($contenu['infos']['last'])){$contenu['infos']['date']=$contenu['infos']['last'];}
 if (!isset($contenu['infos']['date'])){$contenu['infos']['date']='';}
 
 if (!isset($_GET['feed'])){$feed='';}else{$feed=$_GET['feed'];}
 $filename=$_GET['id'];
-$favicon=get_favicon($_GET['url'],$filename);
+$favicon=get_favicon($url_decode,$filename);
 
 if ($_GET['color']!=''){$color='style="background-color:'.$_GET['color'].'"';}else{$color='';}
+if (isset($_GET['filterno'])&&$_GET['filterno']!=''){$filterno=urldecode($_GET['filterno']);}else{$filterno='';}
+if (isset($_GET['filteryes'])&&$_GET['filteryes']!=''){$filteryes=urldecode($_GET['filteryes']);}else{$filteryes='';}
 ## LES TEMPLATES
-$titre='<h1 '.$color.'><img class="favicon" src="'.$favicon.'"/><em class="mark_all_read" data-nb="'.$filename.'" title="'.msg('Mark all as read').'">#NB</em><a href="'.$contenu['infos']['link'].'" title="'.$contenu['infos']['description'].'">'.$contenu['infos']['title'].'</a> <button class="close nomobile" data-nb="'.$feed.'" title="'.msg('Close this feed').'"> </button><button class="refresh nomobile" data-nb="'.$_GET['url'].'" data-param="&color='.$_GET['color'].'&filteryes='.$_GET['filteryes'].'&filterno='.$_GET['filterno'].'" title="'.msg('Refresh this feed').'"> </button><button class="foldunfoldall nomobile" title="'.msg('Fold unfold all items').'"> </button><p style="clear:both"></p></h1>';
+$titre='<h1 '.$color.'><img class="favicon" src="'.$favicon.'"/><em class="mark_all_read" data-nb="'.$filename.'" title="'.msg('Mark all as read').'">#NB</em><a href="'.$contenu['infos']['link'].'" title="'.$contenu['infos']['description'].'">'.$contenu['infos']['title'].'</a> <button class="close nomobile" data-nb="'.$feed.'" title="'.msg('Close this feed').'"> </button><button class="refresh nomobile" data-nb="'.$url_decode.'" data-param="&color='.$_GET['color'].'&filteryes='.$filteryes.'&filterno='.$filterno.'" title="'.msg('Refresh this feed').'"> </button><button class="foldunfoldall nomobile" title="'.msg('Fold unfold all items').'"> </button><p style="clear:both"></p></h1>';
 $tpl_item='<ul class="#STATUS" data-nb="#INDEX"><li class="titre"><button class="toggle" title="'.msg('toggle read/unread state').'"></button><a href="#URL" class="toggle" target="_blank">#TITRE</a></li><li class="description">#DESCRIPTION #MEDIA</li><li class="infos"><a href="#PERMALINK" alt="Guid info" >GUID</a> - #DATE</li></ul> ';
 
 
@@ -131,7 +134,7 @@ foreach($contenu as $key=>$item){
 	
 	if (isset($item['media']['url'])){$media='<br/><a href="'.$item['media']['url'].'" alt="media link">'.basename($item['media']['url']).'</a>';}else{$media='';}
 
-	$classes=$item['status'].' '.filters($_GET['filteryes'],$_GET['filterno'],$item['title'].$item['description']);
+	$classes=$item['status'].' '.filters($filteryes,$filterno,$item['title'].$item['description']);
 	$item['description']=$item['description'].create_reshaarlink_if_needed($item['description'],$item['title'].' ('.$nom_du_flux.')');
 
 	$s=array('#URL','#TITRE','#DESCRIPTION','#DATE','#STATUS','#INDEX','#PERMALINK','#MEDIA');
