@@ -76,27 +76,29 @@ aside{txtc padb 70}
 			aside .widget h1 .refresh{background-position: 0 -189px;}
 			aside .widget h1 .foldunfoldall{background-position: 0 -285px ;}
 			aside .widget h1 .close:hover,aside .widget h1 .refresh:hover,.widget h1 .foldunfoldall:hover{opacity 99}
-		aside .widget ul{marl 5 marr 5 pad 5 ;}
+		aside .widget ul{marl 5 marr 5 pad 5 }
 		aside .widget ul.filtreyes{background-color:rgba(0,255,0,0.2)!important;}
 		aside .widget ul.filtreno{background-color:lightpink;opacity:50;}
 		aside .widget ul.read {opacity 30}
 		aside .widget ul.read:hover {opacity 80}
 		
 		aside .widget ul:hover{background-color:#FFF;}
-		aside .widget ul:impair{background-image:url(img/trame25.png);insethalo white roundc arrondi}
+		aside .widget ul:impair{background-color:#f5f5f5;insethalo white roundc arrondi}
 			aside .widget ul li{list-style:none;}
-			aside .widget ul .titre{txtb  fs 12}
+			aside .widget ul .titre{txtb  fs 12; padding: 0 0 15px 0;}
 			aside .widget ul .titre button.toggle{background:url(img/icones.png) no-repeat transparent;border:none;width:16px;height:16px;curhand padl 16 opacity 50}
 			aside .widget ul.unread .titre button.toggle{background-position: 0 -30px ;}
 			aside .widget ul.read .titre button.toggle{background-position: 0 2px ;}
 			aside .widget ul .titre button.toggle:hover{opacity 99}
-			aside .widget ul .titre a{padr 20 background:url(img/icones.png) no-repeat right -398px transparent;}
+			aside .widget ul .titre a{padr 20 background:url(img/icones.png) no-repeat right -398px transparent;color:#80AD48;}
 			aside .widget ul .titre a:hover{color:#F80;txthalo orange}
 			aside .widget ul .description{overflow:hidden;cursout fs 11 pad 5 padt 0  max-height:50px;}
 			aside .widget ul .description img{roundc arrondi boxshadow 1 2 #888 mar 5 flol max-width:100%;height:auto;}
 			aside .widget ul .description a{txtb}
 			aside .widget ul .infos{fs 10 txti txtr padt 3 color:#777; txtemboss }
 
+		.reshaarlink {padding-top:10px;} 
+		.reshaarlink a {color:#E28E3F;}
 
 .config .widget .scrollable{pad 10}
 .config .widget .scrollable form{mar 0 width:100%;}
