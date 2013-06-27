@@ -7,7 +7,7 @@
 				<a href="http://warriordudimanche.net">Bronco - warriordudimanche.net</a> 
 				<a href="#" title="<?php echo msg('Free and open source (please keep a link to warriordudimanche.net for the author ^^)');?>"><em class="nomobile">Licence</em></a>  
 				<a href="https://github.com/broncowdd/SonarRSS" title="<?php echo msg('on GitHub');?>" class="github"> </a> 
-				<script id='flattrbtn'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=Broncowdd&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=62;f.width=55;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');</script>
+				<script id='flattrbtn'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='//api.flattr.com/button/view/?uid=Broncowdd&button=compact&url='+encodeURIComponent(document.URL);f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('flattrbtn');</script>
 			</footer>
 
 			
